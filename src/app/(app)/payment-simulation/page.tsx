@@ -144,7 +144,20 @@ export default function PaymentSimulationPage() {
     };
 
     recognition.onerror = (event: any) => {
-      console.error('Speech recognition error', event.error);
+      if (event.error === 'not-allowed') {
+        toast({
+          variant: 'destructive',
+          title: 'Voice Command Error',
+          description:
+            'Microphone access was denied. Please enable it in your browser settings to use voice commands.',
+        });
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Voice Command Error',
+          description: `An error occurred: ${event.error}`,
+        });
+      }
       setIsListening(false);
     };
 
