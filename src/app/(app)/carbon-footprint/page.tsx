@@ -29,6 +29,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Progress } from '@/components/ui/progress';
+import { cn } from '@/lib/utils';
 
 const formSchema = z.object({
   transactionDescription: z
@@ -70,10 +71,13 @@ export default function CarbonFootprintPage() {
   };
 
   const getProgressColor = (value: number) => {
-    if (value < 33) return 'bg-green-500';
-    if (value < 66) return 'bg-yellow-500';
+    if (value < 5) return 'bg-green-500';
+    if (value < 20) return 'bg-yellow-500';
     return 'bg-red-500';
   }
+  
+  const normalizedProgress = result ? Math.min((result.carbonFootprintKgCO2e / 50) * 100, 100) : 0;
+
 
   return (
     <div className="container mx-auto max-w-4xl space-y-8">
@@ -159,14 +163,19 @@ export default function CarbonFootprintPage() {
                   <p className="text-5xl font-bold text-primary">
                     {result.carbonFootprintKgCO2e.toFixed(2)}
                   </p>
-                  <p className="text-muted-foreground">kgCO₂e</p>
+                  <p className="text-muted-foreground">kg CO₂e</p>
                 </div>
                 
-                <Progress value={Math.min(result.carbonFootprintKgCO2e, 100)} className="h-3 [&>div]:bg-green-500" />
+                <Progress value={normalizedProgress} className="h-3" indicatorClassName={getProgressColor(result.carbonFootprintKgCO2e)} />
+                
+                <div className="text-xs text-center text-muted-foreground flex justify-between">
+                  <span>Low Impact</span>
+                  <span>High Impact</span>
+                </div>
                 
                 <div>
                   <h4 className="font-semibold mb-2">Explanation</h4>
-                  <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-md">
+                  <p className="text-sm text-muted-foreground bg-muted p-4 rounded-lg border">
                     {result.explanation}
                   </p>
                 </div>

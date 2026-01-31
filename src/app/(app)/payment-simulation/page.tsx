@@ -12,6 +12,7 @@ import {
   ShieldAlert,
   ShieldCheck,
   Voicemail,
+  Zap,
 } from 'lucide-react';
 
 import {
@@ -211,7 +212,7 @@ export default function PaymentSimulationPage() {
         <CardHeader>
           <CardTitle>Simulate a Transaction</CardTitle>
           <CardDescription>
-            Enter payment details below and our AI will analyze it.
+            Enter payment details below and our AI will analyze it. You can also use voice commands.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -276,7 +277,7 @@ export default function PaymentSimulationPage() {
                 <Button type="submit" disabled={isPending} className="flex-1">
                   {isPending ? (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  ) : null}
+                  ) : <Zap className="mr-2 h-4 w-4" />}
                   Analyze Payment
                 </Button>
                 <Button
@@ -296,11 +297,11 @@ export default function PaymentSimulationPage() {
         </CardContent>
       </Card>
       
-      {isPending && <div className="text-center"><Loader2 className="mx-auto h-8 w-8 animate-spin text-primary" /> <p>AI is analyzing...</p></div>}
+      {isPending && <div className="text-center"><Loader2 className="mx-auto h-8 w-8 animate-spin text-primary" /> <p className="mt-2 text-muted-foreground">AI is analyzing...</p></div>}
       
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {prediction && (
-          <Alert variant={prediction.isLikelyToFail ? 'default' : 'default'} className={prediction.isLikelyToFail ? 'bg-amber-100 dark:bg-amber-900/30 border-amber-400' : 'bg-green-100 dark:bg-green-900/30 border-green-400'}>
+          <Alert variant={prediction.isLikelyToFail ? 'warning' : 'success'}>
             {prediction.isLikelyToFail ? (
               <AlertCircle className="h-4 w-4" />
             ) : (
@@ -331,7 +332,7 @@ export default function PaymentSimulationPage() {
         )}
 
         {fraudResult && (
-          <Alert variant={fraudResult.isFraudulent ? 'destructive' : 'default'} className={!fraudResult.isFraudulent ? 'bg-green-100 dark:bg-green-900/30 border-green-400' : ''}>
+          <Alert variant={fraudResult.isFraudulent ? 'destructive' : 'success'}>
             {fraudResult.isFraudulent ? (
               <ShieldAlert className="h-4 w-4" />
             ) : (

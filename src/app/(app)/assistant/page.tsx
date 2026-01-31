@@ -3,7 +3,7 @@ import React, { useState, useTransition, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2, Send } from 'lucide-react';
+import { Loader2, Send, Sparkles } from 'lucide-react';
 import { financialAssistant } from '@/app/actions';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -87,16 +87,19 @@ export default function AssistantPage() {
 
   return (
     <div className="flex flex-col h-full">
-      <header className="space-y-2 mb-4">
-        <h1 className="text-3xl font-bold tracking-tight">AI Assistant</h1>
+      <header className="space-y-2 mb-6">
+        <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
+          <Sparkles className="text-accent" />
+          AI Assistant
+        </h1>
         <p className="text-muted-foreground">
           Your personal financial guide, powered by Octo-Pay.
         </p>
       </header>
 
-      <Card className="flex-1 flex flex-col min-h-0">
-        <CardContent className="flex-1 flex flex-col p-6 min-h-0">
-          <ScrollArea className="flex-1 mb-4 pr-4">
+      <Card className="flex-1 flex flex-col min-h-0 bg-transparent border-0 shadow-none">
+        <CardContent className="flex-1 flex flex-col p-0 min-h-0">
+          <ScrollArea className="flex-1 mb-4 -mr-4 pr-4">
             <div className="space-y-6">
               {messages.map((message, index) => (
                 <div
@@ -107,7 +110,7 @@ export default function AssistantPage() {
                   )}
                 >
                   {message.role === 'model' && (
-                    <Avatar className="h-9 w-9">
+                    <Avatar className="h-9 w-9 border-2 border-primary/50">
                       <div className="bg-primary rounded-full flex items-center justify-center h-full w-full">
                         <Icons.octopus className="size-6 text-primary-foreground" />
                       </div>
@@ -115,10 +118,10 @@ export default function AssistantPage() {
                   )}
                   <div
                     className={cn(
-                      'max-w-md rounded-lg p-3 text-sm',
+                      'max-w-xl rounded-2xl p-4 text-sm shadow-md',
                       message.role === 'user'
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted'
+                        ? 'bg-primary text-primary-foreground rounded-br-none'
+                        : 'bg-muted rounded-bl-none'
                     )}
                   >
                     {message.content}
@@ -133,20 +136,20 @@ export default function AssistantPage() {
               ))}
               {isPending && (
                 <div className="flex items-start gap-4">
-                  <Avatar className="h-9 w-9">
+                  <Avatar className="h-9 w-9 border-2 border-primary/50">
                     <div className="bg-primary rounded-full flex items-center justify-center h-full w-full">
                       <Icons.octopus className="size-6 text-primary-foreground" />
                     </div>
                   </Avatar>
-                  <div className="max-w-md rounded-lg p-3 text-sm bg-muted flex items-center">
-                    <Loader2 className="h-5 w-5 animate-spin" />
+                  <div className="max-w-md rounded-2xl p-4 text-sm bg-muted flex items-center rounded-bl-none">
+                    <Loader2 className="h-5 w-5 animate-spin text-primary" />
                   </div>
                 </div>
               )}
                <div ref={messagesEndRef} />
             </div>
           </ScrollArea>
-          <div className="mt-auto">
+          <div className="mt-auto pt-4 border-t">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -163,13 +166,14 @@ export default function AssistantPage() {
                           {...field}
                           autoComplete="off"
                           disabled={isPending}
+                          className="h-12 text-base rounded-full px-6"
                         />
                       </FormControl>
                     </FormItem>
                   )}
                 />
-                <Button type="submit" size="icon" disabled={isPending}>
-                  <Send className="h-4 w-4" />
+                <Button type="submit" size="icon" disabled={isPending} className="rounded-full h-12 w-12">
+                  <Send className="h-5 w-5" />
                   <span className="sr-only">Send</span>
                 </Button>
               </form>
