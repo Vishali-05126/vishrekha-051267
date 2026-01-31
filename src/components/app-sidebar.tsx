@@ -9,6 +9,7 @@ import {
   Ghost,
   LayoutDashboard,
   Leaf,
+  LogOut,
   PanelLeft,
   Settings,
   ShieldCheck,
@@ -148,11 +149,22 @@ export function AppSidebar() {
           <DropdownMenuContent side="right" align="start">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
-            <DropdownMenuItem>Billing</DropdownMenuItem>
-            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/settings">Profile</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem disabled>Billing</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/settings">Settings</Link>
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Log out</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href="/login" className='w-full'>
+                <div className='flex items-center gap-2'>
+                <LogOut className="size-4" />
+                <span>Sign Out</span>
+                </div>
+              </Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarFooter>
