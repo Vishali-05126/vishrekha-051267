@@ -86,7 +86,7 @@ export default function AssistantPage() {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full animate-fade-in">
       <header className="space-y-2 mb-6">
         <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
           <Sparkles className="text-accent" />
@@ -97,8 +97,8 @@ export default function AssistantPage() {
         </p>
       </header>
 
-      <Card className="flex-1 flex flex-col min-h-0 bg-transparent border-0 shadow-none">
-        <CardContent className="flex-1 flex flex-col p-0 min-h-0">
+      <Card className="flex-1 flex flex-col min-h-0 bg-card/50 backdrop-blur-sm border-border/50">
+        <CardContent className="flex-1 flex flex-col p-4 md:p-6 min-h-0">
           <ScrollArea className="flex-1 mb-4 -mr-4 pr-4">
             <div className="space-y-6">
               {messages.map((message, index) => (
@@ -118,10 +118,10 @@ export default function AssistantPage() {
                   )}
                   <div
                     className={cn(
-                      'max-w-xl rounded-2xl p-4 text-sm shadow-md',
+                      'max-w-xl rounded-2xl p-4 text-sm shadow-lg',
                       message.role === 'user'
-                        ? 'bg-primary text-primary-foreground rounded-br-none'
-                        : 'bg-muted rounded-bl-none'
+                        ? 'bg-gradient-to-br from-primary to-accent text-primary-foreground rounded-br-none'
+                        : 'bg-secondary rounded-bl-none'
                     )}
                   >
                     {message.content}
@@ -141,7 +141,7 @@ export default function AssistantPage() {
                       <Icons.octopus className="size-6 text-primary-foreground" />
                     </div>
                   </Avatar>
-                  <div className="max-w-md rounded-2xl p-4 text-sm bg-muted flex items-center rounded-bl-none">
+                  <div className="max-w-md rounded-2xl p-4 text-sm bg-secondary flex items-center rounded-bl-none">
                     <Loader2 className="h-5 w-5 animate-spin text-primary" />
                   </div>
                 </div>
@@ -149,7 +149,7 @@ export default function AssistantPage() {
                <div ref={messagesEndRef} />
             </div>
           </ScrollArea>
-          <div className="mt-auto pt-4 border-t">
+          <div className="mt-auto pt-4 border-t border-border/50">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -166,7 +166,7 @@ export default function AssistantPage() {
                           {...field}
                           autoComplete="off"
                           disabled={isPending}
-                          className="h-12 text-base rounded-full px-6"
+                          className="h-12 text-base rounded-full px-6 bg-secondary/80 focus:bg-secondary"
                         />
                       </FormControl>
                     </FormItem>
