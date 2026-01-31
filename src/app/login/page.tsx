@@ -41,7 +41,7 @@ export default function LoginPage() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: 'user@octopay.com',
+      email: 'user@greenpay.com',
       password: 'password',
     },
   });
@@ -66,7 +66,7 @@ export default function LoginPage() {
             <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-full bg-primary">
                 <Icons.octopus className="size-10 text-primary-foreground" />
             </div>
-          <CardTitle>Welcome Back to Octo-Pay</CardTitle>
+          <CardTitle>Welcome Back to Green Pay</CardTitle>
           <CardDescription>
             Sign in to access your financial command center.
           </CardDescription>
