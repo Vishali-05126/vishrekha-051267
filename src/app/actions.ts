@@ -20,6 +20,11 @@ import {
   type CalculateCarbonFootprintInput,
   type CalculateCarbonFootprintOutput,
 } from '@/ai/flows/calculate-carbon-footprint';
+import {
+  financialAssistant as financialAssistantFlow,
+  type FinancialAssistantInput,
+  type FinancialAssistantOutput,
+} from '@/ai/flows/financial-assistant';
 
 export async function predictPaymentFailure(
   input: PredictPaymentFailureInput
@@ -66,5 +71,17 @@ export async function calculateCarbonFootprint(
   } catch (e) {
     console.error(e);
     return { error: 'Failed to calculate carbon footprint.' };
+  }
+}
+
+export async function financialAssistant(
+  input: FinancialAssistantInput
+): Promise<FinancialAssistantOutput | { error: string }> {
+  try {
+    const result = await financialAssistantFlow(input);
+    return result;
+  } catch (e) {
+    console.error(e);
+    return { error: 'Failed to get response from assistant.' };
   }
 }

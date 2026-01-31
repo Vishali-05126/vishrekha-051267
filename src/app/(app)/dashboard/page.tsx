@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import {
   ArrowRight,
+  Bot,
   Briefcase,
   CreditCard,
   Leaf,
@@ -33,6 +34,12 @@ const features = [
     description: 'Calculate the environmental impact of transactions.',
     href: '/carbon-footprint',
     icon: <Leaf className="size-8 text-primary" />,
+  },
+  {
+    title: 'AI Assistant',
+    description: 'Chat with our AI for financial advice.',
+    href: '/assistant',
+    icon: <Bot className="size-8 text-primary" />,
   },
   {
     title: 'MSME Dashboard',

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
+  Bot,
   Briefcase,
   CreditCard,
   LayoutDashboard,
@@ -46,6 +47,11 @@ const menuItems = [
     href: '/carbon-footprint',
     icon: Leaf,
     label: 'Carbon Footprint',
+  },
+  {
+    href: '/assistant',
+    icon: Bot,
+    label: 'AI Assistant',
   },
   {
     href: '/msme-dashboard',
