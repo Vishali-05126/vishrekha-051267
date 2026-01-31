@@ -94,7 +94,7 @@ export function AppSidebar() {
           className="flex items-center gap-2 font-bold text-primary-foreground text-lg"
         >
           <Icons.octopus className="size-9 text-accent" />
-          <span className="group-data-[collapsible=icon]:hidden">Green Pay</span>
+          <span className="group-data-[collapsible=icon]:hidden">Green-Pay</span>
         </Link>
       </SidebarHeader>
 

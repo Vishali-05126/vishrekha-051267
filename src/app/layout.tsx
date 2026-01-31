@@ -3,14 +3,14 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Green Pay | Proactive Financial Intelligence',
+  title: 'Green-Pay | Proactive Financial Intelligence',
   description: 'An eco-conscious FinTech system that prevents fraud, financial stress, and payment failure before they happen.',
   manifest: '/manifest.json',
   themeColor: '#8B5CF6',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Green Pay',
+    title: 'Green-Pay',
   },
 };
 

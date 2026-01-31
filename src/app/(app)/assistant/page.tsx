@@ -34,7 +34,7 @@ export default function AssistantPage() {
     {
       role: 'model',
       content:
-        "Hello! I'm Green Pay Assistant. How can I help you with your finances today?",
+        "Hello! I'm Green-Pay Assistant. How can I help you with your finances today?",
     },
   ]);
   const [isPending, startTransition] = useTransition();
@@ -93,7 +93,7 @@ export default function AssistantPage() {
           AI Assistant
         </h1>
         <p className="text-muted-foreground">
-          Your personal financial guide, powered by Green Pay.
+          Your personal financial guide, powered by Green-Pay.
         </p>
       </header>
 
