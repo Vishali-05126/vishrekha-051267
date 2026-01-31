@@ -4,6 +4,7 @@ import {
   Bot,
   Briefcase,
   CreditCard,
+  Ghost,
   Leaf,
   ShieldCheck,
 } from 'lucide-react';
@@ -47,6 +48,12 @@ const features = [
     href: '/msme-dashboard',
     icon: <Briefcase className="size-8 text-primary" />,
   },
+  {
+    title: 'Ghost Commerce',
+    description: 'Scan QR codes for an invisible payment layer.',
+    href: '/ghost-commerce',
+    icon: <Ghost className="size-8 text-primary" />,
+  },
 ];
 
 export default function DashboardPage() {
@@ -61,7 +68,7 @@ export default function DashboardPage() {
         </p>
       </header>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {features.map((feature) => (
           <Card
             key={feature.title}

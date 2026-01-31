@@ -6,6 +6,7 @@ import {
   Bot,
   Briefcase,
   CreditCard,
+  Ghost,
   LayoutDashboard,
   Leaf,
   ShieldCheck,
@@ -57,6 +58,11 @@ const menuItems = [
     href: '/msme-dashboard',
     icon: Briefcase,
     label: 'MSME Dashboard',
+  },
+  {
+    href: '/ghost-commerce',
+    icon: Ghost,
+    label: 'Ghost Commerce',
   },
 ];
 
