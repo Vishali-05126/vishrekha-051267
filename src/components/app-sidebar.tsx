@@ -75,6 +75,11 @@ const menuItems = [
     icon: Ghost,
     label: 'Ghost Commerce',
   },
+  {
+    href: '/settings',
+    icon: Settings,
+    label: 'Settings',
+  },
 ];
 
 export function AppSidebar() {
