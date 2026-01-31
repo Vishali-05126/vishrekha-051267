@@ -1,0 +1,17 @@
+{
+  "name": "Octo-Pay: Proactive Financial Intelligence",
+  "short_name": "Octo-Pay",
+  "description": "A multi-tentacle FinTech system that prevents fraud, financial stress, and payment failure before they happen.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F0B1E",
+  "theme_color": "#8B5CF6",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
