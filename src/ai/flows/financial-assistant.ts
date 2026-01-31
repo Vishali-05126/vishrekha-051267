@@ -3,8 +3,8 @@
  * @fileOverview A conversational AI financial assistant.
  *
  * - financialAssistant - A function that handles the conversation.
- * - FinancialAssistantInputSchema - The input type for the financialAssistant function.
- * - FinancialAssistantOutputSchema - The return type for the financialAssistant function.
+ * - FinancialAssistantInput - The input type for the financialAssistant function.
+ * - FinancialAssistantOutput - The return type for the financialAssistant function.
  */
 
 import { ai } from '@/ai/genkit';
@@ -15,12 +15,12 @@ const MessageSchema = z.object({
   content: z.string(),
 });
 
-export const FinancialAssistantInputSchema = z.object({
+const FinancialAssistantInputSchema = z.object({
   history: z.array(MessageSchema),
 });
 export type FinancialAssistantInput = z.infer<typeof FinancialAssistantInputSchema>;
 
-export const FinancialAssistantOutputSchema = z.object({
+const FinancialAssistantOutputSchema = z.object({
   response: z.string(),
 });
 export type FinancialAssistantOutput = z.infer<typeof FinancialAssistantOutputSchema>;
